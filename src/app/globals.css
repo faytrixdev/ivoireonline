@@ -285,11 +285,16 @@
     border-radius: 14px;
     border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
     background: #fff;
+    color: var(--color-ink);
     font-size: 16px;
     font-family: inherit;
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: color-mix(in srgb, var(--color-ink) 38%, transparent);
   }
   .field textarea {
     min-height: 150px;
