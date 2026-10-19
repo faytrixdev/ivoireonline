@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { CartProvider, useCart } from "./cart-context";
+import { useAuth } from "@/components/auth-context";
 import Link from "next/link";
 import { formatPrice } from "@/data/site";
 
 function CartButton() {
   const { count, total, lines, remove, clear } = useCart();
+  const { user, placeOrder } = useAuth();
   const [open, setOpen] = useState(false);
 
   return (
@@ -104,13 +106,24 @@ function CartButton() {
                 </div>
                 <Link
                   href="/contact"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    if (user) {
+                      placeOrder(
+                        lines.map((l) => ({ name: l.name, qty: l.qty, price: l.price })),
+                        total,
+                      );
+                      clear();
+                    }
+                    setOpen(false);
+                  }}
                   className="btn btn-primary mt-4 w-full"
                 >
                   Finaliser avec l'équipe <span aria-hidden>↗</span>
                 </Link>
                 <p className="mt-3 text-center text-[13px] leading-relaxed text-ink/50">
-                  La finalisation passe par l'équipe Ivoire Online (WhatsApp / commande vérifiée).
+                  {user
+                    ? "Commande enregistrée dans votre compte. La finalisation passe par l'équipe (WhatsApp / commande vérifiée)."
+                    : "La finalisation passe par l'équipe Ivoire Online. Connectez-vous pour suivre vos commandes."}
                 </p>
                 <button
                   type="button"

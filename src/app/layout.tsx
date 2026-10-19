@@ -3,6 +3,7 @@ import { Fraunces, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CartShell } from "@/components/cart";
+import { AuthProvider } from "@/components/auth-context";
 import { RevealSetup } from "@/components/reveal";
 import { site } from "@/data/site";
 import "./globals.css";
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
         <CartShell>
+        <AuthProvider>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-forest focus:px-5 focus:py-3 focus:text-ivory"
@@ -89,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <RevealSetup />
+        </AuthProvider>
         </CartShell>
       </body>
     </html>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { formatPrice, formations } from "@/data/site";
+import { JoinFormation } from "@/components/join-formation";
 
 export function generateStaticParams() {
   return formations.map((f) => ({ slug: f.slug }));
@@ -89,6 +90,7 @@ export default async function FormationDetailPage({
                 >
                   Acheter / obtenir cette offre <span aria-hidden>↗</span>
                 </Link>
+                <JoinFormation slug={formation.slug} />
                 <p className="mt-3 text-center text-[13px] leading-relaxed text-ivory/50">
                   L'accès est ouvert après un paiement vérifié ou une autorisation.
                 </p>

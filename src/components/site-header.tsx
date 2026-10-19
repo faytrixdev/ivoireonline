@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { navigation } from "@/data/site";
 import { CartButton } from "@/components/cart";
 import { BrandLogo } from "@/components/brand-logo";
+import { useAuth } from "@/components/auth-context";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -66,12 +68,21 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden shrink-0 items-center gap-2.5 lg:flex">
-          <Link
-            href="/auth/connexion"
-            className="hidden whitespace-nowrap px-2 text-[14px] font-medium text-ink/70 transition-colors hover:text-forest xl:block"
-          >
-            Se connecter
-          </Link>
+          {user ? (
+            <Link
+              href="/compte"
+              className="whitespace-nowrap px-2 text-[14px] font-medium text-ink/70 transition-colors hover:text-forest xl:block"
+            >
+              Mon compte
+            </Link>
+          ) : (
+            <Link
+              href="/auth/connexion"
+              className="hidden whitespace-nowrap px-2 text-[14px] font-medium text-ink/70 transition-colors hover:text-forest xl:block"
+            >
+              Se connecter
+            </Link>
+          )}
           <CartButton />
           <Link
             href="/contact"
@@ -131,12 +142,32 @@ export function SiteHeader() {
             ))}
           </ul>
           <div className="mt-8 flex flex-col gap-3">
-            <Link href="/auth/connexion" className="btn btn-outline w-full">
-              Se connecter
-            </Link>
-            <Link href="/auth/inscription" className="btn btn-primary w-full">
-              Créer un compte
-            </Link>
+            {user ? (
+              <>
+                <Link href="/compte" className="btn btn-primary w-full">
+                  Mon compte
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    setOpen(false);
+                  }}
+                  className="btn btn-outline w-full"
+                >
+                  Se déconnecter
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/auth/connexion" className="btn btn-outline w-full">
+                  Se connecter
+                </Link>
+                <Link href="/auth/inscription" className="btn btn-primary w-full">
+                  Créer un compte
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </div>
