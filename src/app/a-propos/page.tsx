@@ -97,7 +97,7 @@ export default function AboutPage() {
               </article>
             ))}
 
-            <div className="reveal grid gap-5 sm:grid-cols-2">
+            <div className="reveal grid items-start gap-5 sm:grid-cols-2">
               {values.map((v) => (
                 <div
                   key={v.title}

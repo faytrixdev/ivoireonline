@@ -74,7 +74,7 @@ export function PageHero({
   meta?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-ink/10 bg-ivory pt-[calc(var(--header-height)+72px)] pb-16 md:pb-24">
+    <section className="relative overflow-hidden border-b border-ink/10 bg-ivory pt-[calc(var(--header-height)+56px)] pb-12 md:pb-16">
       <div className="hairline-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden />
       <div
         className="hero-halo pointer-events-none absolute -top-32 right-[-10%] h-[420px] w-[420px] opacity-60"

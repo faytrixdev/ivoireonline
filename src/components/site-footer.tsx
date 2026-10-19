@@ -41,7 +41,7 @@ export function SiteFooter() {
       <div className="container-page">
         <div className="grid gap-12 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-5">
-            <BrandLogo className="h-10" />
+            <BrandLogo className="h-10 [filter:brightness(0)_invert(1)]" />
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-ivory/60">
               {site.description}
             </p>

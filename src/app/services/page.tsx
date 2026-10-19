@@ -163,14 +163,16 @@ export default function ServicesPage() {
                     {c.note}
                   </p>
                 )}
-                <a
-                  href={site.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn mt-auto w-full ${c.featured ? "btn-gold" : "btn-ghost"} !mt-7`}
-                >
-                  Demander des informations <span aria-hidden>↗</span>
-                </a>
+                <div className="mt-auto pt-7">
+                  <a
+                    href={site.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`btn w-full ${c.featured ? "btn-gold" : "btn-ghost"}`}
+                  >
+                    Demander des informations <span aria-hidden>↗</span>
+                  </a>
+                </div>
               </article>
             ))}
           </div>

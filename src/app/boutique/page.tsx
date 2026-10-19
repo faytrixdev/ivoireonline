@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { PageHero } from "@/components/shared";
-import { CartButton } from "@/components/cart";
 import { formatPrice, products } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -22,11 +21,6 @@ export default function BoutiquePage() {
           </>
         }
         intro="Chaque produit est présenté comme une idée concrète : prix d'achat, marge possible et étapes pour démarrer."
-        meta={
-          <div className="mt-6">
-            <CartButton />
-          </div>
-        }
       />
 
       <section className="section-pad">
